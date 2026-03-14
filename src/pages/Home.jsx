@@ -2,11 +2,11 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import SectionHeading from '../components/SectionHeading';
 import ProjectCard from '../components/ProjectCard';
-import SkillBadge from '../components/SkillBadge';
 import CertificateCard from '../components/CertificateCard';
 import StatCard from '../components/StatCard';
 import { personalInfo, skills, projects, certifications, achievements, education, experience } from '../utils/constants';
-import { FiGithub, FiLinkedin, FiMail, FiMapPin, FiCalendar, FiAward } from 'react-icons/fi';
+import { FiGithub, FiLinkedin, FiMail, FiMapPin, FiCalendar, FiAward, FiCode, FiCodepen } from 'react-icons/fi';
+import Skills from '../components/Skills';
 
 const Home = () => {
   const fadeInUp = {
@@ -16,136 +16,126 @@ const Home = () => {
   };
 
   return (
-    <div className="container section-padding">
+    <div className="w-full mx-auto px-6 md:px-12 lg:px-24 py-16 md:py-24 bg-gradient-to-br from-[#181435] to-[#2d1c43]">
       {/* Hero Section */}
       <motion.section 
-        className="min-h-[80vh] flex items-center"
-        initial="initial"
-        animate="animate"
-        variants={fadeInUp}
-      >
-        <div className="space-y-6">
-          <span className="text-[#64ffda] font-mono">Hi, I'm</span>
-          <h1 className="text-5xl md:text-7xl font-bold">
-            <span className="gradient-text">{personalInfo.name}</span>
-          </h1>
-          <h2 className="text-3xl md:text-4xl text-gray-400">{personalInfo.title}</h2>
-          <p className="max-w-2xl text-gray-400 text-lg">
-            Building scalable web applications and turning ideas into real products. 
-            Passionate about clean code, modern tech, and solving real-world problems.
-          </p>
-          
-          <div className="flex flex-wrap gap-4">
-            <a
-              href={personalInfo.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-6 py-3 bg-[#1a1a1a] rounded-lg hover:bg-[#64ffda]/10 transition-colors"
-            >
-              <FiGithub /> GitHub
-            </a>
-            <a
-              href={personalInfo.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-6 py-3 bg-[#1a1a1a] rounded-lg hover:bg-[#64ffda]/10 transition-colors"
-            >
-              <FiLinkedin /> LinkedIn
-            </a>
-            <a
-              href={`mailto:${personalInfo.email}`}
-              className="flex items-center gap-2 px-6 py-3 border border-[#64ffda] text-[#64ffda] rounded-lg hover:bg-[#64ffda]/10 transition-colors"
-            >
-              <FiMail /> Contact Me
-            </a>
-          </div>
+  className="min-h-[80vh] flex items-center"
+  initial="initial"
+  animate="animate"
+  variants={fadeInUp}
+>
+  <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-4xl lg:max-w-7xl mx-auto">
+    {/* Left Column - Text Content */}
+    <div className="space-y-6">
+      <span className="text-[#ff4d4d] font-['Poppins'] tracking-wide text-2xl ">Hi, I'm</span>
+      <h1 className="text-5xl md:text-7xl font-bold font-['Montserrat']">
+        <span className="bg-gradient-to-r from-[#ff4d4d] via-[#9b4dff] to-[#b300ff] bg-clip-text text-transparent bg-[length:200%_200%] animate-gradient">
+          {personalInfo.name}
+        </span>
+      </h1>
+      <h2 className="text-3xl md:text-4xl text-gray-700 font-['Poppins'] font-light">{personalInfo.title}</h2>
+      <p className="max-w-2xl text-gray-600 text-lg font-['Inter'] leading-relaxed">
+        Building scalable web applications and turning ideas into real products. 
+        Passionate about clean code, modern tech, and solving real-world problems.
+      </p>
+      
+      <div className="flex flex-wrap gap-4 pt-4">
+  <a
+    href={personalInfo.github}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#00e676] to-[#00c853] text-black rounded-lg hover:shadow-lg hover:shadow-[#00c853]/30 transition-all duration-300 font-['Poppins']"
+  >
+    <FiGithub /> GitHub
+  </a>
 
-          <div className="flex flex-wrap gap-6 pt-6">
-            <div className="flex items-center gap-2 text-gray-400">
-              <FiMapPin className="text-[#64ffda]" />
-              <span>{personalInfo.location}</span>
-            </div>
-            <div className="flex items-center gap-2 text-gray-400">
-              <FiCalendar className="text-[#64ffda]" />
-              <span>{personalInfo.batch}</span>
-            </div>
-            <div className="flex items-center gap-2 text-gray-400">
-              <FiAward className="text-[#64ffda]" />
-              <span>{personalInfo.cgpa} CGPA</span>
-            </div>
-          </div>
+  <a
+    href={personalInfo.linkedin}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#00e676] to-[#00c853] text-black rounded-lg hover:shadow-lg hover:shadow-[#00c853]/30 transition-all duration-300 font-['Poppins']"
+  >
+    <FiLinkedin /> LinkedIn
+  </a>
+
+  <a
+    href={`mailto:${personalInfo.email}`}
+    className="flex items-center gap-2 px-6 py-3 border-2 border-[#00c853] text-[#00c853] rounded-lg hover:bg-[#00c853] hover:text-black transition-all duration-300 font-['Poppins']"
+  >
+    <FiMail /> Contact Me
+  </a>
+</div>
+
+      <div className="flex flex-wrap gap-6 pt-6">
+        <div className="flex items-center gap-2 text-gray-600">
+          <FiMapPin className="text-[#ff4d4d]" />
+          <span className="font-['Inter']">{personalInfo.location}</span>
         </div>
-      </motion.section>
+        <div className="flex items-center gap-2 text-gray-600">
+          <FiCalendar className="text-[#9b4dff]" />
+          <span className="font-['Inter']">{personalInfo.batch}</span>
+        </div>
+        <div className="flex items-center gap-2 text-gray-600">
+          <FiAward className="text-[#b300ff]" />
+          <span className="font-['Inter']">{personalInfo.cgpa} CGPA</span>
+        </div>
+      </div>
+    </div>
+
+    {/* Right Column - Profile Image */}
+    <div className="relative flex justify-center lg:justify-end">
+      <div className="relative w-88 h-96 md:w-88 md:h-96 lg:w-88 lg:h-96">
+        {/* Gradient Background Effect */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#ff4d4d] via-[#9b4dff] to-[#b300ff] rounded-full blur-3xl opacity-20 animate-pulse"></div>
+        
+        {/* Image Container */}
+        <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white shadow-2xl">
+          <img 
+            src="/images/Pic.png" 
+            alt={personalInfo.name}
+            className="w-full h-full object-cover"
+          />
+        </div>
+
+        {/* Decorative Elements */}
+        <div className="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-r from-[#ff4d4d] to-[#b300ff] rounded-full opacity-70 blur-xl"></div>
+        <div className="absolute -bottom-4 -left-4 w-20 h-20 bg-gradient-to-r from-[#9b4dff] to-[#ff4d4d] rounded-full opacity-70 blur-xl"></div>
+        
+        {/* Floating Badges */}
+        <motion.div 
+          className="absolute -bottom-2 -right-2 bg-white px-4 py-2 rounded-full shadow-lg border border-[#9b4dff]"
+          animate={{ y: [0, -10, 0] }}
+          transition={{ duration: 3, repeat: Infinity }}
+        >
+          <span className="text-sm font-['Poppins'] gap-2 flex items-center text-[#ff4d4d]"> <FiCode/> Problem Solver</span>
+        </motion.div>
+        
+        <motion.div 
+          className="absolute -top-2 -left-2 bg-white px-4 py-2 rounded-full shadow-lg border border-[#ff4d4d]"
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 3.5, repeat: Infinity, delay: 0.5 }}
+        >
+          <span className="text-sm font-['Poppins'] gap-2  flex items-center text-[#9b4dff]"><FiCode className="text-[#b300ff]" />Web Developer</span>
+        </motion.div>
+      </div>
+    </div>
+  </div>
+</motion.section>
 
       {/* Skills Section */}
-      <motion.section 
-        className="section-padding"
-        variants={fadeInUp}
-        initial="initial"
-        whileInView="animate"
-        viewport={{ once: true }}
-      >
-        <SectionHeading number="01." title="Skills" />
-        
-        <div className="space-y-8">
-          <div>
-            <h3 className="text-xl font-semibold text-gray-300 mb-4">Languages</h3>
-            <div className="flex flex-wrap gap-3">
-              {skills.languages.map((skill, index) => (
-                <SkillBadge key={index} skill={skill} category="languages" />
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <h3 className="text-xl font-semibold text-gray-300 mb-4">Web Technologies</h3>
-            <div className="flex flex-wrap gap-3">
-              {skills.webTechnologies.map((skill, index) => (
-                <SkillBadge key={index} skill={skill} category="webTechnologies" />
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <h3 className="text-xl font-semibold text-gray-300 mb-4">Databases</h3>
-            <div className="flex flex-wrap gap-3">
-              {skills.databases.map((skill, index) => (
-                <SkillBadge key={index} skill={skill} category="databases" />
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <h3 className="text-xl font-semibold text-gray-300 mb-4">Tools & Platforms</h3>
-            <div className="flex flex-wrap gap-3">
-              {skills.tools.map((skill, index) => (
-                <SkillBadge key={index} skill={skill} category="tools" />
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <h3 className="text-xl font-semibold text-gray-300 mb-4">Soft Skills</h3>
-            <div className="flex flex-wrap gap-3">
-              {skills.softSkills.map((skill, index) => (
-                <SkillBadge key={index} skill={skill} category="softSkills" />
-              ))}
-            </div>
-          </div>
-        </div>
-      </motion.section>
+      <Skills skills={skills} />
 
       {/* Projects Section */}
       <motion.section 
-        className="section-padding"
+        className="py-16 md:py-24"
         variants={fadeInUp}
         initial="initial"
         whileInView="animate"
         viewport={{ once: true }}
       >
-        <SectionHeading number="02." title="Projects" />
+        <SectionHeading title="Projects" />
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
           {projects.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
@@ -154,15 +144,15 @@ const Home = () => {
 
       {/* Achievements Section */}
       <motion.section 
-        className="section-padding"
+        className="py-16 md:py-24"
         variants={fadeInUp}
         initial="initial"
         whileInView="animate"
         viewport={{ once: true }}
       >
-        <SectionHeading number="03." title="Achievements" />
+        <SectionHeading title="Achievements" />
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8 mt-8">
           <StatCard 
             label="LeetCode Problems" 
             value={achievements.leetcode.solved} 
@@ -185,40 +175,19 @@ const Home = () => {
           />
         </div>
 
-        <div className="bg-[#1a1a1a] p-6 rounded-xl border border-gray-800">
-          <h3 className="text-xl font-semibold text-gray-300 mb-4">GitHub Stats</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div>
-              <p className="text-gray-400">Followers</p>
-              <p className="text-2xl font-bold text-[#64ffda]">{achievements.github.followers}</p>
-            </div>
-            <div>
-              <p className="text-gray-400">Following</p>
-              <p className="text-2xl font-bold text-[#64ffda]">{achievements.github.following}</p>
-            </div>
-            <div>
-              <p className="text-gray-400">PRs</p>
-              <p className="text-2xl font-bold text-[#64ffda]">{achievements.github.pullRequests}</p>
-            </div>
-            <div>
-              <p className="text-gray-400">Top Lang</p>
-              <p className="text-2xl font-bold text-[#64ffda]">{achievements.github.topLang}</p>
-            </div>
-          </div>
-        </div>
       </motion.section>
 
       {/* Certifications Section */}
       <motion.section 
-        className="section-padding"
+        className="py-16 md:py-24"
         variants={fadeInUp}
         initial="initial"
         whileInView="animate"
         viewport={{ once: true }}
       >
-        <SectionHeading number="04." title="Certifications" />
+        <SectionHeading title="Certifications" />
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
           {certifications.map((cert, index) => (
             <CertificateCard key={index} certificate={cert} />
           ))}
@@ -227,23 +196,23 @@ const Home = () => {
 
       {/* Education Section */}
       <motion.section 
-        className="section-padding"
+        className="py-16 md:py-24"
         variants={fadeInUp}
         initial="initial"
         whileInView="animate"
         viewport={{ once: true }}
       >
-        <SectionHeading number="05." title="Education" />
+        <SectionHeading title="Education" />
         
-        <div className="space-y-6">
+        <div className="space-y-6 mt-8">
           {education.map((edu, index) => (
-            <div key={index} className="bg-[#1a1a1a] p-6 rounded-xl border border-gray-800">
+            <div key={index} className="bg-gradient-to-br from-white to-purple-50 p-6 rounded-xl border border-purple-200 shadow-sm hover:shadow-md transition-shadow">
               <div className="flex flex-col md:flex-row md:items-center justify-between mb-2">
-                <h3 className="text-xl font-semibold text-gray-200">{edu.degree}</h3>
-                <span className="text-[#64ffda] font-mono">{edu.period}</span>
+                <h3 className="text-xl font-semibold text-gray-800 font-['Poppins']">{edu.degree}</h3>
+                <span className="text-[#b300ff] font-['Montserrat'] text-sm font-medium">{edu.period}</span>
               </div>
-              <p className="text-gray-400 mb-2">{edu.institution}, {edu.location}</p>
-              <p className="text-gray-500">{edu.score}</p>
+              <p className="text-gray-600 mb-2 font-['Inter']">{edu.institution}, {edu.location}</p>
+              <p className="text-[#9b4dff] font-['Inter'] font-medium">{edu.score}</p>
             </div>
           ))}
         </div>
@@ -251,23 +220,23 @@ const Home = () => {
 
       {/* Experience Section */}
       <motion.section 
-        className="section-padding"
+        className="py-16 md:py-24"
         variants={fadeInUp}
         initial="initial"
         whileInView="animate"
         viewport={{ once: true }}
       >
-        <SectionHeading number="06." title="Leadership & Experience" />
+        <SectionHeading title="Leadership & Experience" />
         
-        <div className="space-y-6">
+        <div className="space-y-6 mt-8">
           {experience.map((exp, index) => (
-            <div key={index} className="bg-[#1a1a1a] p-6 rounded-xl border border-gray-800">
+            <div key={index} className="bg-gradient-to-br from-white to-purple-50 p-6 rounded-xl border border-purple-200 shadow-sm hover:shadow-md transition-shadow">
               <div className="flex flex-col md:flex-row md:items-center justify-between mb-2">
-                <h3 className="text-xl font-semibold text-gray-200">{exp.role}</h3>
-                <span className="text-[#64ffda] font-mono">{exp.date}</span>
+                <h3 className="text-xl font-semibold text-gray-800 font-['Poppins']">{exp.role}</h3>
+                <span className="text-[#b300ff] font-['Montserrat'] text-sm font-medium">{exp.date}</span>
               </div>
-              <p className="text-gray-400 mb-2">{exp.organization}</p>
-              <p className="text-gray-500">{exp.description}</p>
+              <p className="text-gray-600 mb-2 font-['Inter'] font-medium">{exp.organization}</p>
+              <p className="text-gray-500 font-['Inter'] leading-relaxed">{exp.description}</p>
             </div>
           ))}
         </div>

@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import SectionHeading from '../components/SectionHeading';
 import ProjectCard from '../components/ProjectCard';
 import { projects } from '../utils/constants';
+import { FiFilter, FiCode } from 'react-icons/fi';
 
 const Projects = () => {
   const [filter, setFilter] = useState('all');
@@ -13,58 +14,96 @@ const Projects = () => {
     ? projects 
     : projects.filter(p => p.tech.includes(filter));
 
-  return (
-    <div className="container section-padding">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-      >
-        <SectionHeading number="02." title="All Projects" />
-        
-        <p className="text-gray-400 max-w-3xl mb-8">
-          Here's a collection of my work - from full-stack applications to interactive web experiences. 
-          Each project represents a unique challenge and learning opportunity.
-        </p>
+  const totalProjects = projects.length;
 
-        {/* Filter Buttons */}
-        <div className="flex flex-wrap gap-3 mb-8">
-          {technologies.map((tech, index) => (
-            <button
-              key={index}
-              onClick={() => setFilter(tech)}
-              className={`px-4 py-2 rounded-lg text-sm font-mono transition-all duration-300 ${
-                filter === tech
-                  ? 'bg-[#64ffda] text-[#0a0a0a]'
-                  : 'bg-[#1a1a1a] text-gray-400 hover:bg-[#64ffda]/10 hover:text-[#64ffda]'
-              }`}
-            >
-              {tech === 'all' ? 'All Projects' : tech}
-            </button>
-          ))}
+  const fadeInUp = {
+    initial: { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.5 }
+  };
+
+  return (
+    <motion.section 
+      className="py-16 md:py-20 bg-gray-900"
+      initial="initial"
+      whileInView="animate"
+      viewport={{ once: true }}
+      variants={fadeInUp}
+    >
+      <div className="container mx-auto px-4">
+        <SectionHeading title="All Projects" />
+        
+        {/* Simple Stats */}
+        <div className="bg-gray-800/50 rounded-lg p-4 mb-6 inline-block">
+          <p className="text-gray-300">
+            <span className="text-blue-400 font-bold">{totalProjects}</span> Total Projects
+          </p>
         </div>
 
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredProjects.map((project) => (
+        {/* Filter Section - Simplified */}
+        <div className="mb-8">
+          <div className="flex items-center gap-2 mb-3">
+            <FiFilter className="text-gray-400" />
+            <h3 className="text-gray-300 font-medium">Filter by Technology</h3>
+          </div>
+          
+          <div className="flex flex-wrap gap-2">
+            {technologies.map((tech, index) => (
+              <button
+                key={index}
+                onClick={() => setFilter(tech)}
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
+                  filter === tech
+                    ? 'bg-blue-500 text-white'
+                    : 'bg-gray-800 text-gray-400 hover:bg-gray-700 hover:text-white'
+                }`}
+              >
+                {tech === 'all' ? 'All Projects' : tech}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Projects Grid - Fixed with equal height cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr">
+          {filteredProjects.map((project, index) => (
             <motion.div
               key={project.id}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.3 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+              className="h-full flex"
             >
               <ProjectCard project={project} />
             </motion.div>
           ))}
         </div>
 
+        {/* Empty State */}
         {filteredProjects.length === 0 && (
           <div className="text-center py-12">
-            <p className="text-gray-400">No projects found with this technology.</p>
+            <div className="w-16 h-16 bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-4">
+              <FiCode className="w-8 h-8 text-gray-600" />
+            </div>
+            <h3 className="text-xl font-bold text-white mb-2">No Projects Found</h3>
+            <p className="text-gray-400 mb-4">No projects match the selected filter.</p>
+            <button
+              onClick={() => setFilter('all')}
+              className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
+            >
+              View All Projects
+            </button>
           </div>
         )}
-      </motion.div>
-    </div>
+
+        {/* Simple Footer */}
+        {filteredProjects.length > 0 && (
+          <p className="text-gray-500 text-sm text-center mt-8">
+            Showing {filteredProjects.length} of {totalProjects} projects
+          </p>
+        )}
+      </div>
+    </motion.section>
   );
 };
 
