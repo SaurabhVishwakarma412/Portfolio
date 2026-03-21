@@ -16,9 +16,8 @@ export const personalInfo = {
 
 // Skills organized by category
 export const skills = {
-  languages: ["C", "C++", "Java", "Python", "JavaScript", "PHP"],
-  webTechnologies: ["HTML", "CSS", "Tailwind CSS", "React.js", "Node.js", "Express.js"],
-  databases: ["MySQL", "MongoDB", "PostgreSQL"],
+  languages: ["C", "C++", "Java", "Python", "PHP"],
+  webTechnologies: ["HTML", "CSS","JavaScript", "Tailwind CSS", "React.js", "Node.js", "Express.js", "MySQL", "MongoDB", "PostgreSQL"],
   tools: ["Git", "GitHub", "Postman", "XAMPP", "Figma"],
   softSkills: ["Problem-Solving", "Leadership", "Adaptability", "Teamwork", "Analytical Thinking"]
 };
@@ -74,24 +73,50 @@ export const projects = [
 ];
 
 // Certifications
+// Certifications
 export const certifications = [
   {
     title: "Cloud Computing",
     issuer: "NPTEL IITKGP",
     date: "Apr 2025",
-    link: "https://drive.google.com/drive/folders/1W1nQ30DrB5iKtnrPKtzB5hG24GN2gJ9S"
+    link: "https://drive.google.com/file/d/1o1B4H34wkmdSNGREQLVRUSmq6VwEuv0z/view?usp=sharing",
+    image: "/images/Course1.png"
   },
   {
     title: "Placement Ace: Java Bootcamp",
     issuer: "LPU",
     date: "Jul 2025",
-    link: "https://drive.google.com/drive/folders/1W1nQ30DrB5iKtnrPKtzB5hG24GN2gJ9S"
+    link: "https://drive.google.com/file/d/1IPHvSuaeWGA0UlZUqmpQc8YghTimkrUT/view?usp=sharing",
+    image: "/images/Course2.png"
   },
   {
-    title: "Responsive Web Design",
-    issuer: "FreeCodeCamp",
-    date: "Nov 2023",
-    link: "https://drive.google.com/drive/folders/1W1nQ30DrB5iKtnrPKtzB5hG24GN2gJ9S"
+    title: "Computer Communications",
+    issuer: "Coursera(University of Colorado)",
+    date: "Nov 2025",
+    link: "https://drive.google.com/file/d/13EJ0RjTZlp_Uat2zXHu7_TtFJNRKhhc9/view?usp=sharing",
+    image: "/images/Course3.png"
+  },
+  {
+    title: "The Bits and Bytes of Computer Networking",
+    issuer: "Google",
+    date: "Sep 2024",
+    link: "https://drive.google.com/file/d/1q1Cg2vjUk3fAKVCJ2LzyhE6Uj4P86sF9/view?usp=sharing",
+    image: "/images/Course4.png"
+  },
+  
+  {
+    title: "Computational Theory: Language Principle & Finite Automata Theory",
+    issuer: "Infosys",
+    date: "Aug 2025",
+    link: "https://drive.google.com/file/d/1lda4QeygS02RpbaEMVzQXTEmxIIhorB5/view?usp=sharing",
+    image: "/images/Course5.png"
+  },
+  {
+    title: "Master Generative AI & AI Tools",
+    issuer: "Udemy",
+    date: "Aug 2025",
+    link: "https://drive.google.com/file/d/18m1JBHYEBcREerQCqdwrk_GJafMrxRTp/view?usp=sharing",
+    image: "/images/Course6.png"
   }
 ];
 
@@ -162,3 +187,5 @@ export const experience = [
     description: "Leading social awareness initiatives, child education programs, and community development activities."
   }
 ];
+
+export const courses = ["Course1.png","Course2.png","Course3.png","Course4.png","Course5.png","Course6.png",]

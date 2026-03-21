@@ -113,7 +113,7 @@ const Skills = ({ skills }) => {
         {/* Web Technologies */}
         <div>
           <h3 className="text-2xl font-semibold text-gray-100 mb-6 font-['Poppins'] relative inline-block">
-            Web Technologies
+            Web Technologies & Databases
             <span className="absolute -bottom-2 left-0 w-1/2 h-1 bg-gradient-to-r from-[#9b4dff] to-[#b300ff] rounded-full"></span>
           </h3>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
@@ -127,31 +127,6 @@ const Skills = ({ skills }) => {
                     {getSkillLogo(skill)}
                   </div>
                   <span className="font-['Poppins'] text-sm font-medium text-gray-700 group-hover:text-[#9b4dff] transition-colors">
-                    {skill}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Databases */}
-        <div>
-          <h3 className="text-2xl font-semibold text-gray-100 mb-6 font-['Poppins'] relative inline-block">
-            Databases
-            <span className="absolute -bottom-2 left-0 w-1/2 h-1 bg-gradient-to-r from-[#b300ff] to-[#ff4d4d] rounded-full"></span>
-          </h3>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-            {skills.databases.map((skill, index) => (
-              <div 
-                key={index}
-                className="group bg-[#f5f0ff] p-5 rounded-xl border border-[#e0d0ff] shadow-sm hover:shadow-xl transition-all duration-300 hover:border-[#b300ff] hover:-translate-y-2"
-              >
-                <div className="flex flex-col items-center text-center gap-3">
-                  <div className="w-16 h-16 flex items-center justify-center bg-white rounded-xl group-hover:bg-gradient-to-br group-hover:from-[#b300ff]/5 group-hover:to-[#ff4d4d]/5 transition-all duration-300">
-                    {getSkillLogo(skill)}
-                  </div>
-                  <span className="font-['Poppins'] text-sm font-medium text-gray-700 group-hover:text-[#b300ff] transition-colors">
                     {skill}
                   </span>
                 </div>
