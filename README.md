@@ -1,6 +1,5 @@
 # 👨‍💻 Saurabh Vishwakarma - Portfolio Website
 
-![Portfolio Preview](https://via.placeholder.com/1200x630/0a0a0a/64ffda?text=Saurabh+Vishwakarma+Portfolio)
 
 [![Live Demo](https://img.shields.io/badge/LIVE_DEMO-64ffda?style=for-the-badge&logo=vercel&logoColor=black)](https://your-portfolio-url.vercel.app)
 [![GitHub](https://img.shields.io/badge/GITHUB-0a0a0a?style=for-the-badge&logo=github&logoColor=white)](https://github.com/SaurabhVishwakarma412)
