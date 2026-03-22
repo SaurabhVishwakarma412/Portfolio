@@ -13,110 +13,109 @@ const Header = () => {
   ];
 
   return (
-    <header className="fixed w-full z-50 bg-gradient-to-r from-gray-900 to-gray-800 shadow-lg py-3">
-      <nav className="container mx-auto flex justify-between items-center px-6">
-        
-        {/* Logo with Purple Theme */}
-        <Link
-          to="/"
-          className="flex items-center gap-3 group"
-        >
-          <img 
-            src="/images/favicon.png" 
-            alt="logo" 
-            className="rounded-full w-14 h-14 border-2 border-purple-500/30 group-hover:border-purple-400 transition-all duration-300" 
-          />
-          <span className="text-2xl font-extrabold text-white group-hover:text-purple-400 transition-colors duration-300">
+    <header className="fixed w-full z-50 backdrop-blur-xl bg-white/5 border-b border-white/10 shadow-lg">
+      
+      <nav className="container mx-auto flex justify-between items-center px-6 py-3">
+
+        {/*Logo */}
+        <Link to="/" className="flex items-center gap-3 group">
+          <div className="relative">
+            <img
+              src="/images/favicon.png"
+              alt="logo"
+              className="w-12 h-12 rounded-full border border-purple-400/30 group-hover:scale-105 transition-all duration-300"
+            />
+            <div className="absolute inset-0 rounded-full bg-purple-500/20 blur-md opacity-0 group-hover:opacity-100 transition"></div>
+          </div>
+
+          <span className="text-2xl font-bold text-white group-hover:text-purple-300 transition">
             Saurabh
           </span>
         </Link>
 
-        {/* Desktop Navigation */}
+        {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
+
           {navItems.map((item) => (
             <Link
               key={item.path}
               to={item.path}
-              className={`font-medium text-lg transition-all duration-300 relative group ${
+              className={`relative text-lg font-medium transition ${
                 location.pathname === item.path
-                  ? "text-purple-400"
-                  : "text-gray-300 hover:text-purple-400"
+                  ? "text-white"
+                  : "text-indigo-300 hover:text-white"
               }`}
             >
               {item.name}
-              
-              {/* Dual-layer underline */}
-              <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-gray-700 rounded-full"></span>
-              <span className={`absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full transform scale-x-0 transition-transform duration-300 origin-left group-hover:scale-x-100 ${
-                location.pathname === item.path ? 'scale-x-100' : ''
-              }`}></span>
-              
-              {/* Floating dot indicator for active */}
-              {location.pathname === item.path && (
-                <span className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-purple-400 rounded-full"></span>
-              )}
+
+              {/* Underline */}
+              <span
+                className={`absolute left-0 -bottom-1 h-[2px] w-full bg-gradient-to-r from-purple-400 to-pink-400 transform origin-left transition ${
+                  location.pathname === item.path
+                    ? "scale-x-100"
+                    : "scale-x-0 group-hover:scale-x-100"
+                }`}
+              ></span>
             </Link>
           ))}
 
-          {/* Resume Button with Elegant Design */}
+          {/* Resume Button */}
           <a
-            href="/resume.pdf"
-            className="relative px-6 py-2.5 rounded-xl font-semibold text-lg group overflow-hidden"
+            href="/images/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="relative px-6 py-2 rounded-xl font-medium text-white overflow-hidden group"
           >
-            {/* Glass background */}
-            <span className="absolute inset-0 bg-gradient-to-br from-purple-900/30 to-pink-900/30 backdrop-blur-sm rounded-xl border border-purple-500/30 group-hover:border-purple-400/50 transition-all duration-300"></span>
-            
-            {/* Hover gradient */}
-            <span className="absolute inset-0 bg-gradient-to-r from-purple-600/0 via-purple-600/0 to-pink-600/0 group-hover:from-purple-600/20 group-hover:via-purple-600/10 group-hover:to-pink-600/20 rounded-xl transition-all duration-500"></span>
-            
-            {/* Text with gradient */}
-            <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-pink-300 group-hover:from-white group-hover:to-pink-200 transition-all duration-300">
+            <span className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 opacity-80 group-hover:opacity-100 transition"></span>
+
+            <span className="absolute inset-0 blur-md bg-purple-500/30 opacity-0 group-hover:opacity-100 transition"></span>
+
+            <span className="relative z-10 flex items-center gap-2">
               Resume
             </span>
-            
-            {/* Subtle glow on hover */}
-            <span className="absolute inset-0 rounded-xl bg-purple-500/10 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></span>
           </a>
+
         </div>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Button */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden text-3xl text-gray-300 hover:text-purple-400 transition-colors duration-300"
+          className="md:hidden text-3xl text-indigo-300 hover:text-white transition"
         >
           {isOpen ? <FiX /> : <FiMenu />}
         </button>
+
       </nav>
 
-      {/* Mobile Navigation with Purple Theme */}
+      {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden absolute top-full left-0 w-full bg-gray-800 shadow-xl py-8 border-t border-purple-500/20">
+        <div className="md:hidden backdrop-blur-xl bg-white/5 border-t border-white/10 py-8">
           <div className="flex flex-col items-center gap-6">
+
             {navItems.map((item) => (
               <Link
                 key={item.path}
                 to={item.path}
                 onClick={() => setIsOpen(false)}
-                className={`font-semibold text-2xl transition-colors duration-300 ${
+                className={`text-xl font-semibold ${
                   location.pathname === item.path
                     ? "text-purple-400"
-                    : "text-gray-300 hover:text-purple-400"
+                    : "text-indigo-300 hover:text-white"
                 }`}
               >
                 {item.name}
               </Link>
             ))}
 
+            {/* Resume Button */}
             <a
-              href="/resume.pdf"
-              className="relative px-8 py-3 rounded-xl font-semibold text-lg group overflow-hidden mt-2"
+              href="/images/resume.pdf"
+              target="_blank"
+              className="px-6 py-2 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-medium shadow-lg hover:shadow-purple-500/30 transition"
             >
-              <span className="absolute inset-0 bg-gradient-to-br from-purple-900/30 to-pink-900/30 backdrop-blur-sm rounded-xl border border-purple-500/30 group-hover:border-purple-400/50 transition-all duration-300"></span>
-              <span className="absolute inset-0 bg-gradient-to-r from-purple-600/0 via-purple-600/0 to-pink-600/0 group-hover:from-purple-600/20 group-hover:via-purple-600/10 group-hover:to-pink-600/20 rounded-xl transition-all duration-500"></span>
-              <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-pink-300 group-hover:from-white group-hover:to-pink-200 transition-all duration-300">
-                Resume
-              </span>
+              Resume
             </a>
+
           </div>
         </div>
       )}

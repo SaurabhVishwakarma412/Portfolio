@@ -24,7 +24,7 @@ const Projects = () => {
 
   return (
     <motion.section 
-      className="py-16 md:py-20 bg-gray-900"
+      className="py-16 md:py-20 bg-gradient-to-br from-[#181435] to-[#2d1c43]"
       initial="initial"
       whileInView="animate"
       viewport={{ once: true }}
