@@ -11,7 +11,7 @@ export const personalInfo = {
   github: "https://github.com/SaurabhVishwakarma412",
   leetcode: "https://leetcode.com/u/Saurabh_Vishwakarma01/",
   hackerrank: "https://www.hackerrank.com/profile/saurabhkv412",
-  cgpa: "7.8",
+  cgpa: "7.7",
   batch: "2023-2027"
 };
 
